@@ -1,5 +1,7 @@
 package com.bridgelabz.cabInvoiceGenerator;
 
+import java.util.List;
+
 /**
  * @author - Shreyash Jadhav
  */
@@ -20,5 +22,13 @@ public class CabInvoiceGenerator {
             totalFare += this.calculateFare(ride.distance, ride.time);
         }
         return new InvoiceSummary(rides.length, totalFare);
+    }
+
+    public InvoiceSummary calculateFare(List<Ride> rideList) {
+        double totalFare = 0;
+        for (Ride ride : rideList) {
+            totalFare += this.calculateFare(ride.distance, ride.time);
+        }
+        return new InvoiceSummary(rideList.size(), totalFare);
     }
 }
